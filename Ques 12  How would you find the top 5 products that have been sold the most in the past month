@@ -1,0 +1,25 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Read the CSV file into a pandas DataFrame
+data = pd.read_csv('your_file.csv')
+
+# Find the top 5 players with the highest number of goals scored
+top_5_goals = data.nlargest(5, 'goals_scored')
+
+# Find the top 5 players with the highest salaries
+top_5_salaries = data.nlargest(5, 'salary')
+
+# Calculate the average age of players
+average_age = data['age'].mean()
+
+# Display the names of players above the average age
+above_avg_age = data[data['age'] > average_age]['player_name']
+
+# Visualize the distribution of players based on their positions using a bar chart
+position_distribution = data['position'].value_counts()
+position_distribution.plot(kind='bar')
+plt.xlabel('Position')
+plt.ylabel('Number of Players')
+plt.title('Distribution of Players based on Positions')
+plt.show()
